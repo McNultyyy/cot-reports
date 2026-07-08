@@ -1,0 +1,813 @@
+{
+  "generated": "2026-07-08T18:22:23Z",
+  "source": "U.S. CFTC Commitments of Traders",
+  "start_year": 2018,
+  "group_order": [
+    "Equities",
+    "FX",
+    "Rates",
+    "Crypto",
+    "Metals",
+    "Energy",
+    "Agriculture",
+    "Livestock"
+  ],
+  "instruments": [
+    {
+      "ticker": "ES",
+      "name": "E-Mini S&P 500",
+      "group": "Equities",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -37592,
+        "wow": -2144,
+        "z": -0.08
+      }
+    },
+    {
+      "ticker": "NQ",
+      "name": "E-Mini Nasdaq-100",
+      "group": "Equities",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -7604,
+        "wow": 1540,
+        "z": 0.23
+      }
+    },
+    {
+      "ticker": "YM",
+      "name": "E-Mini Dow ($5)",
+      "group": "Equities",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 12069,
+        "wow": 2595,
+        "z": 0.55
+      }
+    },
+    {
+      "ticker": "RTY",
+      "name": "E-Mini Russell 2000",
+      "group": "Equities",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -25568,
+        "wow": 1270,
+        "z": 0.06
+      }
+    },
+    {
+      "ticker": "EMD",
+      "name": "E-Mini S&P 400 MidCap",
+      "group": "Equities",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 760,
+        "wow": 89,
+        "z": 0.1
+      }
+    },
+    {
+      "ticker": "VIX",
+      "name": "VIX Futures",
+      "group": "Equities",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -58486,
+        "wow": 8288,
+        "z": 0.78
+      }
+    },
+    {
+      "ticker": "NIK",
+      "name": "Nikkei 225 (USD)",
+      "group": "Equities",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-03-03",
+      "summary": {
+        "net": 255,
+        "wow": 3268,
+        "z": 2.1
+      }
+    },
+    {
+      "ticker": "EUR",
+      "name": "Euro FX",
+      "group": "FX",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 1099,
+        "wow": -29059,
+        "z": -1.39
+      }
+    },
+    {
+      "ticker": "GBP",
+      "name": "British Pound",
+      "group": "FX",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -102147,
+        "wow": 3572,
+        "z": 0.46
+      }
+    },
+    {
+      "ticker": "JPY",
+      "name": "Japanese Yen",
+      "group": "FX",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -155092,
+        "wow": -8988,
+        "z": -0.21
+      }
+    },
+    {
+      "ticker": "AUD",
+      "name": "Australian Dollar",
+      "group": "FX",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -17700,
+        "wow": -4688,
+        "z": -0.46
+      }
+    },
+    {
+      "ticker": "CAD",
+      "name": "Canadian Dollar",
+      "group": "FX",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -150806,
+        "wow": -4014,
+        "z": -0.14
+      }
+    },
+    {
+      "ticker": "CHF",
+      "name": "Swiss Franc",
+      "group": "FX",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -38958,
+        "wow": 2136,
+        "z": 0.77
+      }
+    },
+    {
+      "ticker": "NZD",
+      "name": "New Zealand Dollar",
+      "group": "FX",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -63280,
+        "wow": -8436,
+        "z": -1.33
+      }
+    },
+    {
+      "ticker": "MXN",
+      "name": "Mexican Peso",
+      "group": "FX",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 70936,
+        "wow": -3289,
+        "z": -0.5
+      }
+    },
+    {
+      "ticker": "BRL",
+      "name": "Brazilian Real",
+      "group": "FX",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 44674,
+        "wow": 995,
+        "z": 0.12
+      }
+    },
+    {
+      "ticker": "DXY",
+      "name": "US Dollar Index",
+      "group": "FX",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 13016,
+        "wow": 88,
+        "z": -0.08
+      }
+    },
+    {
+      "ticker": "ZB",
+      "name": "US Treasury Bond",
+      "group": "Rates",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -90780,
+        "wow": 85263,
+        "z": 3.25
+      }
+    },
+    {
+      "ticker": "UB",
+      "name": "Ultra US T-Bond",
+      "group": "Rates",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -286669,
+        "wow": 31431,
+        "z": 1.81
+      }
+    },
+    {
+      "ticker": "ZN",
+      "name": "10Y T-Note",
+      "group": "Rates",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -808891,
+        "wow": 26375,
+        "z": 0.37
+      }
+    },
+    {
+      "ticker": "TN",
+      "name": "Ultra 10Y T-Note",
+      "group": "Rates",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -137029,
+        "wow": -16195,
+        "z": -0.58
+      }
+    },
+    {
+      "ticker": "ZF",
+      "name": "5Y T-Note",
+      "group": "Rates",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -1320510,
+        "wow": -19241,
+        "z": -0.45
+      }
+    },
+    {
+      "ticker": "ZT",
+      "name": "2Y T-Note",
+      "group": "Rates",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -1287581,
+        "wow": 31265,
+        "z": 0.4
+      }
+    },
+    {
+      "ticker": "ZQ",
+      "name": "30-Day Fed Funds",
+      "group": "Rates",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -336017,
+        "wow": -36614,
+        "z": -0.33
+      }
+    },
+    {
+      "ticker": "SR3",
+      "name": "3-Month SOFR",
+      "group": "Rates",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -2876540,
+        "wow": -68148,
+        "z": -0.16
+      }
+    },
+    {
+      "ticker": "SR1",
+      "name": "1-Month SOFR",
+      "group": "Rates",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -151904,
+        "wow": -25927,
+        "z": -0.42
+      }
+    },
+    {
+      "ticker": "BTC",
+      "name": "Bitcoin (CME)",
+      "group": "Crypto",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 3770,
+        "wow": 246,
+        "z": 0.3
+      }
+    },
+    {
+      "ticker": "ETH",
+      "name": "Ether (CME)",
+      "group": "Crypto",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 3919,
+        "wow": 8,
+        "z": -0.09
+      }
+    },
+    {
+      "ticker": "SOL",
+      "name": "Solana (CME)",
+      "group": "Crypto",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 1077,
+        "wow": -51,
+        "z": -0.22
+      }
+    },
+    {
+      "ticker": "XRP",
+      "name": "XRP (CME)",
+      "group": "Crypto",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 996,
+        "wow": -409,
+        "z": -3.08
+      }
+    },
+    {
+      "ticker": "GC",
+      "name": "Gold",
+      "group": "Metals",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 194019,
+        "wow": 12680,
+        "z": 0.81
+      }
+    },
+    {
+      "ticker": "SI",
+      "name": "Silver",
+      "group": "Metals",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 27368,
+        "wow": 3617,
+        "z": 1.25
+      }
+    },
+    {
+      "ticker": "HG",
+      "name": "Copper",
+      "group": "Metals",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 64788,
+        "wow": -6832,
+        "z": -1.25
+      }
+    },
+    {
+      "ticker": "PL",
+      "name": "Platinum",
+      "group": "Metals",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 15001,
+        "wow": -94,
+        "z": 0.03
+      }
+    },
+    {
+      "ticker": "PA",
+      "name": "Palladium",
+      "group": "Metals",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -4324,
+        "wow": -1068,
+        "z": -1.7
+      }
+    },
+    {
+      "ticker": "CL",
+      "name": "WTI Crude Oil",
+      "group": "Energy",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 110531,
+        "wow": -4102,
+        "z": -0.1
+      }
+    },
+    {
+      "ticker": "BZ",
+      "name": "Brent Crude (Last Day)",
+      "group": "Energy",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -34532,
+        "wow": -10041,
+        "z": -1.13
+      }
+    },
+    {
+      "ticker": "NG",
+      "name": "Natural Gas (Henry Hub)",
+      "group": "Energy",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 252692,
+        "wow": -1014,
+        "z": -0.47
+      }
+    },
+    {
+      "ticker": "HO",
+      "name": "NY Harbor ULSD",
+      "group": "Energy",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 3668,
+        "wow": 4604,
+        "z": 1.03
+      }
+    },
+    {
+      "ticker": "RB",
+      "name": "RBOB Gasoline",
+      "group": "Energy",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 54331,
+        "wow": 2227,
+        "z": 0.22
+      }
+    },
+    {
+      "ticker": "ZC",
+      "name": "Corn",
+      "group": "Agriculture",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 64177,
+        "wow": 5844,
+        "z": 0.03
+      }
+    },
+    {
+      "ticker": "ZS",
+      "name": "Soybeans",
+      "group": "Agriculture",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 76627,
+        "wow": -24217,
+        "z": -0.87
+      }
+    },
+    {
+      "ticker": "ZW",
+      "name": "Wheat (SRW)",
+      "group": "Agriculture",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -55004,
+        "wow": -6593,
+        "z": -0.51
+      }
+    },
+    {
+      "ticker": "KE",
+      "name": "Wheat (HRW)",
+      "group": "Agriculture",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -10339,
+        "wow": 4788,
+        "z": 0.65
+      }
+    },
+    {
+      "ticker": "ZM",
+      "name": "Soybean Meal",
+      "group": "Agriculture",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 48686,
+        "wow": -10335,
+        "z": -0.67
+      }
+    },
+    {
+      "ticker": "ZL",
+      "name": "Soybean Oil",
+      "group": "Agriculture",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 99449,
+        "wow": -9726,
+        "z": -0.68
+      }
+    },
+    {
+      "ticker": "CT",
+      "name": "Cotton No. 2",
+      "group": "Agriculture",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 77848,
+        "wow": -5710,
+        "z": -0.81
+      }
+    },
+    {
+      "ticker": "KC",
+      "name": "Coffee C",
+      "group": "Agriculture",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 20531,
+        "wow": 5478,
+        "z": 1.42
+      }
+    },
+    {
+      "ticker": "CC",
+      "name": "Cocoa",
+      "group": "Agriculture",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -14460,
+        "wow": 5329,
+        "z": 1.57
+      }
+    },
+    {
+      "ticker": "SB",
+      "name": "Sugar No. 11",
+      "group": "Agriculture",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -96730,
+        "wow": 37692,
+        "z": 1.43
+      }
+    },
+    {
+      "ticker": "LE",
+      "name": "Live Cattle",
+      "group": "Livestock",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 87861,
+        "wow": -9291,
+        "z": -1.71
+      }
+    },
+    {
+      "ticker": "GF",
+      "name": "Feeder Cattle",
+      "group": "Livestock",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": 3215,
+        "wow": -1365,
+        "z": -0.48
+      }
+    },
+    {
+      "ticker": "HE",
+      "name": "Lean Hogs",
+      "group": "Livestock",
+      "reports": [
+        "legacy",
+        "disagg"
+      ],
+      "latest_date": "2026-06-30",
+      "summary": {
+        "net": -62271,
+        "wow": -5062,
+        "z": -0.25
+      }
+    }
+  ],
+  "latest_report_date": "2026-06-30"
+}

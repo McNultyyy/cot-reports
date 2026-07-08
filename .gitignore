@@ -1,0 +1,15 @@
+# Raw CFTC downloads — large, re-downloadable, regenerated on every build.
+# The committed data is the processed JSON under docs/data/.
+data/raw/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

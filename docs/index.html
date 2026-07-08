@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>COT Reports — CFTC Commitments of Traders</title>
+  <meta name="description" content="Interactive visualisation of the CFTC Commitments of Traders reports, updated weekly." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body data-theme="auto">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">COT</span>
+      <div class="brand-txt">
+        <h1>Commitments of Traders</h1>
+        <p class="sub">Weekly CFTC futures positioning · latest report <span id="latest-date">—</span></p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <input id="search" type="search" placeholder="Search markets…" autocomplete="off" aria-label="Search markets" />
+      <button id="theme-toggle" class="btn-icon" title="Toggle light / dark" aria-label="Toggle theme">◑</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section id="overview" class="view">
+      <div class="overview-head">
+        <h2>Markets</h2>
+        <p class="hint">Speculator (smart-money) net positioning and this week's move. Click a market for full history.</p>
+      </div>
+      <div id="grid"></div>
+    </section>
+
+    <!-- DETAIL -->
+    <section id="detail" class="view" hidden>
+      <div class="detail-top">
+        <button id="back" class="btn-back">← All markets</button>
+        <div class="detail-title">
+          <h2 id="d-name">—</h2>
+          <span id="d-meta" class="d-meta"></span>
+        </div>
+        <div id="report-tabs" class="tabs" role="tablist"></div>
+      </div>
+
+      <div id="tiles" class="tiles"></div>
+
+      <div class="controls">
+        <label class="ctl">
+          <span>Category for change / z-score</span>
+          <select id="cat-select"></select>
+        </label>
+        <label class="ctl">
+          <span>Z-score window</span>
+          <select id="win-select">
+            <option value="26">26 weeks</option>
+            <option value="52" selected>52 weeks</option>
+            <option value="104">104 weeks</option>
+          </select>
+        </label>
+        <label class="ctl">
+          <span>Jump to report date</span>
+          <select id="date-select"></select>
+        </label>
+      </div>
+
+      <figure class="chart-card">
+        <figcaption>Net positions by trader category <span class="cap-note">(long − short, contracts)</span></figcaption>
+        <div id="chart-net" class="chart"></div>
+      </figure>
+
+      <div class="chart-2col">
+        <figure class="chart-card">
+          <figcaption><span id="cap-z">Weekly change z-score</span> <span class="cap-note">(±2 = unusual)</span></figcaption>
+          <div id="chart-z" class="chart chart-sm"></div>
+        </figure>
+        <figure class="chart-card">
+          <figcaption>Net as % of open interest</figcaption>
+          <div id="chart-pct" class="chart chart-sm"></div>
+        </figure>
+      </div>
+
+      <figure class="chart-card">
+        <figcaption>Open interest <span class="cap-note">(total contracts)</span></figcaption>
+        <div id="chart-oi" class="chart chart-sm"></div>
+      </figure>
+
+      <figure class="chart-card">
+        <figcaption>Report snapshot — <span id="snap-date">—</span></figcaption>
+        <div class="table-wrap">
+          <table id="snap-table">
+            <thead><tr><th>Category</th><th>Long</th><th>Short</th><th>Net</th><th>Net Δ wk</th><th>% of OI</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </figure>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Source: <a href="https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm" target="_blank" rel="noopener">U.S. CFTC Commitments of Traders</a>.
+       Data updated weekly (report released Fridays, reflecting the prior Tuesday). Generated <span id="gen-time">—</span>.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

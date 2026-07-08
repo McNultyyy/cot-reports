@@ -1,0 +1,4 @@
+# Normalise line endings to LF so Windows checkouts and the Linux GitHub Action
+# don't fight over CRLF vs LF in the committed JSON / source.
+* text=auto eol=lf
+*.png binary
