@@ -1,5 +1,7 @@
 # COT Reports
 
+### 🔗 Live site: **https://mcnultyyy.github.io/cot-reports/**
+
 An interactive, auto-updating visualisation of the U.S. CFTC **Commitments of
 Traders** reports, served as a static site on GitHub Pages.
 
