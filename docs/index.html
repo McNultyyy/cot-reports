@@ -67,34 +67,34 @@
       </div>
 
       <figure class="chart-card">
-        <figcaption>Net positions by trader category <span class="cap-note">(long − short, contracts)</span></figcaption>
+        <figcaption>Net positions by trader category <span class="cap-note">(long − short, contracts)</span><span class="help"><button class="info" type="button" aria-label="How to read this chart" aria-expanded="false">i</button><span class="tip" role="tooltip">Each line is one trader group's net position — long minus short contracts. Above zero is net long (positioned for a rise), below zero net short. Hedgers and speculators usually sit on opposite sides; watch for extremes or crossovers, which often precede turning points.</span></span></figcaption>
         <div id="chart-net" class="chart"></div>
       </figure>
 
       <div class="chart-2col">
         <figure class="chart-card">
-          <figcaption><span id="cap-cot">COT index</span> <span class="cap-note">(0–100 · position in range · ≥80 / ≤20 crowded)</span></figcaption>
+          <figcaption><span id="cap-cot">COT index</span> <span class="cap-note">(0–100 · position in range · ≥80 / ≤20 crowded)</span><span class="help"><button class="info" type="button" aria-label="How to read this chart" aria-expanded="false">i</button><span class="tip" role="tooltip">The selected group's net position scaled 0–100 against its high–low range over the lookback window. 100 = the most bullish it has been positioned in that window, 0 = the most bearish. The red band (≥80) marks crowded longs and the blue band (≤20) crowded shorts — stretched positioning that often reverts.</span></span></figcaption>
           <div id="chart-cot" class="chart chart-sm"></div>
         </figure>
         <figure class="chart-card">
-          <figcaption><span id="cap-z">Weekly change z-score</span> <span class="cap-note">(±2 = unusual)</span></figcaption>
+          <figcaption><span id="cap-z">Weekly change z-score</span> <span class="cap-note">(±2 = unusual)</span><span class="help"><button class="info" type="button" aria-label="How to read this chart" aria-expanded="false">i</button><span class="tip" role="tooltip">How unusual this week's change in net position is versus the trailing window. Bars beyond the ±2 dashed lines are larger than about 95% of recent weekly moves — aggressive repositioning. Blue means net rose faster than usual, red means it fell; bars near zero are normal noise.</span></span></figcaption>
           <div id="chart-z" class="chart chart-sm"></div>
         </figure>
       </div>
 
       <div class="chart-2col">
         <figure class="chart-card">
-          <figcaption>Net as % of open interest</figcaption>
+          <figcaption>Net as % of open interest<span class="help"><button class="info" type="button" aria-label="How to read this chart" aria-expanded="false">i</button><span class="tip" role="tooltip">The net positions divided by total open interest, so a group's bet stays comparable across years as the market grows or shrinks. It answers how big the position is relative to the whole market — a speculator net long worth 20% of open interest is heavy in any era.</span></span></figcaption>
           <div id="chart-pct" class="chart chart-sm"></div>
         </figure>
         <figure class="chart-card">
-          <figcaption>Open interest <span class="cap-note">(total contracts)</span></figcaption>
+          <figcaption>Open interest <span class="cap-note">(total contracts)</span><span class="help"><button class="info" type="button" aria-label="How to read this chart" aria-expanded="false">i</button><span class="tip" role="tooltip">Total outstanding contracts — a measure of how much participation and money is in the market. Rising open interest behind a price trend signals conviction; falling open interest suggests the move is losing sponsorship.</span></span></figcaption>
           <div id="chart-oi" class="chart chart-sm"></div>
         </figure>
       </div>
 
       <figure class="chart-card">
-        <figcaption>Report snapshot — <span id="snap-date">—</span></figcaption>
+        <figcaption>Report snapshot — <span id="snap-date">—</span><span class="help"><button class="info" type="button" aria-label="How to read this table" aria-expanded="false">i</button><span class="tip" role="tooltip">The full breakdown for a single report date: long, short and net contracts for each group, the week-over-week change, net as a share of open interest, and the COT index. Use the date selector above to scrub through history.</span></span></figcaption>
         <div class="table-wrap">
           <table id="snap-table">
             <thead><tr><th>Category</th><th>Long</th><th>Short</th><th>Net</th><th>Net Δ wk</th><th>% of OI</th><th>COT idx</th></tr></thead>

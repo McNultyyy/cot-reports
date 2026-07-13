@@ -50,6 +50,29 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   setTheme(next);
 });
 
+/* ── "How to read this chart" toggletips ────────────────────────────────
+   CSS handles hover/keyboard-focus; this adds tap-to-toggle for touch, plus
+   outside-click and Escape to dismiss. Tips are static markup in the HTML. */
+function closeTips(except) {
+  document.querySelectorAll('.help.open').forEach((h) => {
+    if (h === except) return;
+    h.classList.remove('open');
+    const b = h.querySelector('.info');
+    if (b) b.setAttribute('aria-expanded', 'false');
+  });
+}
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.tip')) return;              // clicks inside a tip keep it open
+  const btn = e.target.closest('.info');
+  if (!btn) { closeTips(null); return; }             // outside click closes any open tip
+  e.preventDefault();
+  const help = btn.parentElement;
+  closeTips(help);
+  const open = help.classList.toggle('open');
+  btn.setAttribute('aria-expanded', String(open));
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeTips(null); });
+
 /* ── Number formatting ──────────────────────────────────────────────────── */
 const fmt = new Intl.NumberFormat('en-US');
 const sign = (n) => (n > 0 ? '+' : '') + fmt.format(n);
