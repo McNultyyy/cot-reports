@@ -36,6 +36,9 @@ OUT_DIR = os.path.join(ROOT, "docs", "data")
 START_YEAR = int(os.environ.get("COT_START_YEAR", "2018"))
 END_YEAR = datetime.now(timezone.utc).year
 FORCE = os.environ.get("COT_FORCE") == "1"
+
+# Trailing window (weeks) for the overview summary's z-score and COT index.
+SUMMARY_WINDOW = 52
 UA = {"User-Agent": "cot-reports (github pages data builder)"}
 
 BASE = "https://www.cftc.gov/files/dea/history"
@@ -174,14 +177,34 @@ def series_for(df: pd.DataFrame, cfg: dict, market: str) -> dict | None:
     return out
 
 
-def summarize(net: list[int], window: int = 52) -> dict:
-    """Latest net, week-over-week change, and z-score of that change.
+def cot_index(net: list[int], window: int = SUMMARY_WINDOW) -> float | None:
+    """COT Index: where the latest net sits within its trailing `window` range.
+
+    Scales the current net position 0-100 against the min/max it held over the
+    lookback window (the classic Williams range normalisation). 100 = top of the
+    range (most bullish that category has been positioned); 0 = bottom. Readings
+    >=80 / <=20 flag crowded positioning. Returns None if there is too little
+    history, and 50.0 for a perfectly flat range.
+    """
+    if len(net) < 2:
+        return None
+    win = net[-window:]
+    lo, hi = min(win), max(win)
+    if hi == lo:
+        return 50.0
+    return round((net[-1] - lo) / (hi - lo) * 100, 1)
+
+
+def summarize(net: list[int], window: int = SUMMARY_WINDOW) -> dict:
+    """Latest net, week-over-week change, z-score of that change, and COT index.
 
     Uses the classic 'large speculator' measure. z compares the newest weekly
-    change against the mean/std of the trailing `window` weekly changes.
+    change against the mean/std of the trailing `window` weekly changes; the COT
+    index compares the latest net against the same window's min/max range.
     """
+    ci = cot_index(net, window)
     if len(net) < 3:
-        return {"net": net[-1] if net else 0, "wow": 0, "z": 0.0}
+        return {"net": net[-1] if net else 0, "wow": 0, "z": 0.0, "cot_index": ci}
     changes = [net[i] - net[i - 1] for i in range(1, len(net))]
     latest = changes[-1]
     hist = changes[-window:]
@@ -189,7 +212,7 @@ def summarize(net: list[int], window: int = 52) -> dict:
     var = sum((c - mean) ** 2 for c in hist) / len(hist)
     std = var ** 0.5
     z = (latest - mean) / std if std > 0 else 0.0
-    return {"net": net[-1], "wow": latest, "z": round(z, 2)}
+    return {"net": net[-1], "wow": latest, "z": round(z, 2), "cot_index": ci}
 
 
 def main():
@@ -207,6 +230,7 @@ def main():
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source": "U.S. CFTC Commitments of Traders",
         "start_year": START_YEAR,
+        "summary_window": SUMMARY_WINDOW,
         "group_order": GROUP_ORDER,
         "instruments": [],
     }
@@ -242,7 +266,7 @@ def main():
             json.dump(record, f, separators=(",", ":"))
 
         # Overview summary: classic large-speculator (legacy Non-Commercial) net.
-        summary = {"net": 0, "wow": 0, "z": 0.0}
+        summary = {"net": 0, "wow": 0, "z": 0.0, "cot_index": None}
         if "legacy" in record["reports"]:
             summary = summarize(record["reports"]["legacy"]["categories"]["Non-Commercial"]["net"])
 

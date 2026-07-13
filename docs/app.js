@@ -128,8 +128,20 @@ function renderOverview() {
   }
 }
 
+/* Slim COT-index gauge for a card: filled bar (coloured by zone) + value. */
+function cotGauge(v) {
+  const zone = cotZone(v);
+  const w = v == null ? 0 : Math.max(0, Math.min(100, v));
+  const lab = v == null ? '—' : Math.round(v);
+  const win = (state.index && state.index.summary_window) || 52;
+  return `<div class="cot" title="COT index — spec net's position in its ${win}-week range (100 = top, 0 = bottom)">
+      <div class="cot-bar"><i class="cot-fill ${zone}" style="width:${w}%"></i></div>
+      <span class="cot-val ${zone}">idx ${lab}</span>
+    </div>`;
+}
+
 function card(it) {
-  const s = it.summary || { net: 0, wow: 0, z: 0 };
+  const s = it.summary || { net: 0, wow: 0, z: 0, cot_index: null };
   const el = document.createElement('button');
   el.className = 'card';
   el.dataset.search = (it.ticker + ' ' + it.name).toLowerCase();
@@ -144,6 +156,7 @@ function card(it) {
       <div class="card-net">${compact(s.net)}</div>
       <div class="card-cat">spec net · contracts</div>
     </div>
+    ${cotGauge(s.cot_index)}
     <div class="card-bot">
       <span class="delta ${up ? 'up' : 'down'}">${up ? '▲' : '▼'} ${sign(s.wow)}</span>
       <span class="badge ${zc.cls}"><span class="dot"></span>${zc.label}</span>
@@ -231,7 +244,11 @@ function renderReport() {
 
   const win = document.getElementById('win-select');
   win.value = String(state.window);
-  win.onchange = () => { state.window = +win.value; renderCharts(); };
+  win.onchange = () => {
+    state.window = +win.value;
+    renderCharts();
+    updateSnapshot(+document.getElementById('date-select').value);
+  };
 
   // date jump
   const rep = state.inst.reports[state.report];
@@ -243,6 +260,29 @@ function renderReport() {
   renderTiles();
   renderCharts();
   updateSnapshot(rep.dates.length - 1);
+}
+
+/* COT index for a net series: where each point sits within the min/max range of
+   its trailing `window` weeks, scaled 0-100 (Williams range normalisation).
+   100 = top of the range, 0 = bottom; null until there are ≥2 observations. */
+function cotIndex(net, window) {
+  const out = new Array(net.length).fill(null);
+  for (let i = 0; i < net.length; i++) {
+    const start = Math.max(0, i - window + 1);
+    if (i - start < 1) continue;               // need at least two points for a range
+    let lo = Infinity, hi = -Infinity;
+    for (let k = start; k <= i; k++) { if (net[k] < lo) lo = net[k]; if (net[k] > hi) hi = net[k]; }
+    out[i] = hi > lo ? +(((net[i] - lo) / (hi - lo)) * 100).toFixed(1) : 50;
+  }
+  return out;
+}
+
+/* Zone class for a COT index value: crowded long (≥80), crowded short (≤20). */
+function cotZone(v) {
+  if (v == null) return '';
+  if (v >= 80) return 'cot-hot';
+  if (v <= 20) return 'cot-cold';
+  return 'cot-mid';
 }
 
 /* Weekly change z-score for one category's net series. */
@@ -365,7 +405,37 @@ function renderCharts() {
     series: [...netSeries, markerSeries(p)],
   });
 
-  /* 2 — Weekly change z-score (diverging bars) for focus category */
+  /* 2 — COT index (0-100): focus category's net position within its range */
+  const ci = cotIndex(c[focus].net, state.window);
+  document.getElementById('cap-cot').textContent = `${focus} — COT index (${state.window}w)`;
+  const hotBand = currentMode() === 'dark' ? 'rgba(230,103,103,0.10)' : 'rgba(227,73,72,0.08)';
+  const coldBand = currentMode() === 'dark' ? 'rgba(57,135,229,0.10)' : 'rgba(42,120,214,0.08)';
+  const cotChart = mkChart('chart-cot');
+  cotChart.__markerIdx = 1;
+  cotChart.setOption({
+    grid: { ...baseGrid(), left: 40 },
+    tooltip: { ...tooltipBox(p), valueFormatter: (v) => (v == null ? '—' : Math.round(v)) },
+    xAxis: { type: 'category', data: dates, boundaryGap: false, ...axisCommon(p) },
+    yAxis: { type: 'value', min: 0, max: 100, interval: 20,
+             axisLabel: { color: p.muted, fontSize: 11 }, splitLine: { lineStyle: { color: p.grid } }, axisLine: { show: false } },
+    dataZoom: dataZoom(p),
+    // Colour the line by zone: crowded long (>80) red, crowded short (<20) blue.
+    visualMap: { show: false, type: 'piecewise', dimension: 1, seriesIndex: 0,
+      pieces: [{ gt: 80, lte: 100, color: p.neg }, { gte: 0, lt: 20, color: p.pos }], outOfRange: { color: p.cat[0] } },
+    series: [{
+      name: 'COT index', type: 'line', showSymbol: false, connectNulls: false,
+      lineStyle: { width: 2 }, data: ci,
+      markArea: { silent: true, data: [
+        [{ yAxis: 80, itemStyle: { color: hotBand } }, { yAxis: 100 }],
+        [{ yAxis: 0, itemStyle: { color: coldBand } }, { yAxis: 20 }],
+      ] },
+      markLine: { silent: true, symbol: 'none',
+        label: { color: p.muted, fontSize: 10, formatter: (d) => String(d.value) },
+        lineStyle: { color: p.warning, type: 'dashed', width: 1 }, data: [{ yAxis: 80 }, { yAxis: 20 }] },
+    }, markerSeries(p)],
+  });
+
+  /* 3 — Weekly change z-score (diverging bars) for focus category */
   const { z } = zScores(c[focus].net, state.window);
   const zc = mkChart('chart-z');
   zc.__markerIdx = 1;
@@ -383,7 +453,7 @@ function renderCharts() {
     }, markerSeries(p)],
   });
 
-  /* 3 — Net as % of open interest (lines) */
+  /* 4 — Net as % of open interest (lines) */
   const oi = rep.oi;
   const pctChart = mkChart('chart-pct');
   const pctSeries = names.map((name, i) => ({
@@ -402,7 +472,7 @@ function renderCharts() {
     series: [...pctSeries, markerSeries(p)],
   });
 
-  /* 4 — Open interest (area) */
+  /* 5 — Open interest (area) */
   const oiChart = mkChart('chart-oi');
   oiChart.__markerIdx = 1;
   oiChart.setOption({
@@ -451,6 +521,7 @@ function updateSnapshot(idx) {
     const net = s.net[idx];
     const wow = idx > 0 ? net - s.net[idx - 1] : 0;
     const pct = oi ? (net / oi * 100).toFixed(1) + '%' : '—';
+    const civ = cotIndex(s.net, state.window)[idx];
     const color = p.cat[i % p.cat.length];
     return `<tr>
       <td class="cat"><span class="swatch" style="background:${color}"></span>${name}</td>
@@ -459,7 +530,8 @@ function updateSnapshot(idx) {
       <td class="${net >= 0 ? 'num-pos' : 'num-neg'}">${sign(net)}</td>
       <td class="${wow >= 0 ? 'num-pos' : 'num-neg'}">${sign(wow)}</td>
       <td>${pct}</td>
+      <td class="${cotZone(civ)}">${civ == null ? '—' : Math.round(civ)}</td>
     </tr>`;
   }).join('') +
-    `<tr><td class="cat" style="color:var(--muted)">Open interest</td><td colspan="5" style="text-align:left;color:var(--muted)">${fmt.format(oi)} contracts</td></tr>`;
+    `<tr><td class="cat" style="color:var(--muted)">Open interest</td><td colspan="6" style="text-align:left;color:var(--muted)">${fmt.format(oi)} contracts</td></tr>`;
 }

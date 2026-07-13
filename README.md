@@ -17,14 +17,23 @@ so the charts refresh with no build step and no server.
   - **Legacy** — Commercial / Non-Commercial / Non-Reportable net positions (every market).
   - **Traders in Financial Futures (TFF)** — Dealer / Asset Manager / Leveraged / Other (financials).
   - **Disaggregated** — Producer-Merchant / Swap Dealers / Managed Money / Other (commodities).
-- **Per market:** net positions by category over time, weekly-change z-scores
-  (±2σ flags unusual repositioning), net as % of open interest, open interest,
-  and a per-report-date snapshot table you can scrub through.
-- **Overview grid:** speculator net + weekly move + z-score badge for every
-  market at a glance. History back to 2018.
+- **Per market:** net positions by category over time, the **COT index**
+  (where net sits within its trailing range, 0–100; ≥80 / ≤20 flag crowded
+  positioning), weekly-change z-scores (±2σ flags unusual repositioning), net as
+  % of open interest, open interest, and a per-report-date snapshot table you can
+  scrub through. A single **lookback** control (26 / 52 / 104 / 156 weeks) drives
+  both the z-score and the COT index.
+- **Overview grid:** speculator net + weekly move + z-score badge + a COT-index
+  gauge (position in its 52-week range) for every market at a glance. History
+  back to 2018.
 
 Deep-link a market with `#TICKER` (e.g. `…/index.html#GC`) and force a theme with
 `?theme=dark` / `?theme=light`.
+
+The **COT index** (Williams range normalisation) scales the latest net position
+against the min/max it held over the lookback window: `100 = top of range`,
+`0 = bottom`. It's the standard first-glance gauge for spotting crowded or
+washed-out positioning.
 
 ## How it works
 

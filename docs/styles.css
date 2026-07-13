@@ -131,6 +131,20 @@ main { max-width: 1180px; margin: 0 auto; padding: 22px 20px 40px; }
 .badge.warn  { color: var(--serious); } .badge.warn .dot { background: var(--warning); }
 .badge.alert { color: var(--critical); } .badge.alert .dot { background: var(--critical); }
 
+/* COT index gauge (overview cards): net's position in its 52-week range. */
+.cot { display: flex; align-items: center; gap: 8px; margin-top: -2px; }
+.cot-bar { position: relative; flex: 1; height: 6px; border-radius: 999px; background: var(--grid); overflow: hidden; }
+.cot-fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: var(--baseline); }
+.cot-fill.cot-hot  { background: var(--critical); }
+.cot-fill.cot-cold { background: var(--pos); }
+.cot-fill.cot-mid  { background: var(--baseline); }
+.cot-val { font-size: 11px; font-weight: 650; font-variant-numeric: tabular-nums; color: var(--muted); min-width: 46px; text-align: right; }
+.cot-val.cot-hot  { color: var(--critical); }
+.cot-val.cot-cold { color: var(--pos); }
+/* COT index cell in the snapshot table */
+#snap-table td.cot-hot  { color: var(--critical); font-weight: 600; }
+#snap-table td.cot-cold { color: var(--pos); font-weight: 600; }
+
 /* ── Detail ───────────────────────────────────────────────────────────── */
 .detail-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
 .btn-back {

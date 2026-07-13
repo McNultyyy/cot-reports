@@ -28,7 +28,7 @@
     <section id="overview" class="view">
       <div class="overview-head">
         <h2>Markets</h2>
-        <p class="hint">Speculator (smart-money) net positioning and this week's move. Click a market for full history.</p>
+        <p class="hint">Speculator (smart-money) net positioning, this week's move, and the COT index (position within its 52-week range). Click a market for full history.</p>
       </div>
       <div id="grid"></div>
     </section>
@@ -52,11 +52,12 @@
           <select id="cat-select"></select>
         </label>
         <label class="ctl">
-          <span>Z-score window</span>
+          <span>Lookback (z-score &amp; COT index)</span>
           <select id="win-select">
             <option value="26">26 weeks</option>
             <option value="52" selected>52 weeks</option>
             <option value="104">104 weeks</option>
+            <option value="156">156 weeks (3y)</option>
           </select>
         </label>
         <label class="ctl">
@@ -72,25 +73,31 @@
 
       <div class="chart-2col">
         <figure class="chart-card">
+          <figcaption><span id="cap-cot">COT index</span> <span class="cap-note">(0–100 · position in range · ≥80 / ≤20 crowded)</span></figcaption>
+          <div id="chart-cot" class="chart chart-sm"></div>
+        </figure>
+        <figure class="chart-card">
           <figcaption><span id="cap-z">Weekly change z-score</span> <span class="cap-note">(±2 = unusual)</span></figcaption>
           <div id="chart-z" class="chart chart-sm"></div>
         </figure>
+      </div>
+
+      <div class="chart-2col">
         <figure class="chart-card">
           <figcaption>Net as % of open interest</figcaption>
           <div id="chart-pct" class="chart chart-sm"></div>
         </figure>
+        <figure class="chart-card">
+          <figcaption>Open interest <span class="cap-note">(total contracts)</span></figcaption>
+          <div id="chart-oi" class="chart chart-sm"></div>
+        </figure>
       </div>
-
-      <figure class="chart-card">
-        <figcaption>Open interest <span class="cap-note">(total contracts)</span></figcaption>
-        <div id="chart-oi" class="chart chart-sm"></div>
-      </figure>
 
       <figure class="chart-card">
         <figcaption>Report snapshot — <span id="snap-date">—</span></figcaption>
         <div class="table-wrap">
           <table id="snap-table">
-            <thead><tr><th>Category</th><th>Long</th><th>Short</th><th>Net</th><th>Net Δ wk</th><th>% of OI</th></tr></thead>
+            <thead><tr><th>Category</th><th>Long</th><th>Short</th><th>Net</th><th>Net Δ wk</th><th>% of OI</th><th>COT idx</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
