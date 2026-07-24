@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-18T13:39:18Z",
+  "generated": "2026-07-24T22:35:31Z",
   "source": "U.S. CFTC Commitments of Traders",
   "start_year": 2018,
   "summary_window": 52,
@@ -22,12 +22,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -38938,
-        "wow": 3953,
-        "z": 0.04,
-        "cot_index": 98.2
+        "net": -16784,
+        "wow": 22154,
+        "z": 0.51,
+        "cot_index": 100.0
       }
     },
     {
@@ -38,12 +38,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 2721,
-        "wow": 658,
-        "z": 0.13,
-        "cot_index": 25.5
+        "net": 4546,
+        "wow": 1825,
+        "z": 0.25,
+        "cot_index": 28.0
       }
     },
     {
@@ -54,11 +54,11 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 13204,
-        "wow": 1724,
-        "z": 0.34,
+        "net": 13927,
+        "wow": 723,
+        "z": 0.1,
         "cot_index": 100.0
       }
     },
@@ -70,12 +70,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -24680,
-        "wow": 6329,
-        "z": 0.47,
-        "cot_index": 60.9
+        "net": -6959,
+        "wow": 17721,
+        "z": 1.41,
+        "cot_index": 76.2
       }
     },
     {
@@ -86,12 +86,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 952,
-        "wow": -1344,
-        "z": -1.35,
-        "cot_index": 26.9
+        "net": 1640,
+        "wow": 688,
+        "z": 0.72,
+        "cot_index": 37.3
       }
     },
     {
@@ -102,12 +102,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -65783,
-        "wow": -1659,
-        "z": -0.11,
-        "cot_index": 54.6
+        "net": -76861,
+        "wow": -11078,
+        "z": -0.94,
+        "cot_index": 43.6
       }
     },
     {
@@ -134,12 +134,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -12605,
-        "wow": 3622,
-        "z": 0.33,
-        "cot_index": 1.8
+        "net": -41338,
+        "wow": -28733,
+        "z": -1.3,
+        "cot_index": 0.0
       }
     },
     {
@@ -150,12 +150,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -71253,
-        "wow": 16650,
-        "z": 1.34,
-        "cot_index": 32.4
+        "net": -55561,
+        "wow": 15692,
+        "z": 1.24,
+        "cot_index": 48.3
       }
     },
     {
@@ -166,12 +166,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -122663,
-        "wow": 1115,
-        "z": 0.31,
-        "cot_index": 12.4
+        "net": -152125,
+        "wow": -29462,
+        "z": -1.37,
+        "cot_index": 1.2
       }
     },
     {
@@ -182,12 +182,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -30710,
-        "wow": -6059,
-        "z": -0.55,
-        "cot_index": 37.5
+        "net": -37685,
+        "wow": -6975,
+        "z": -0.63,
+        "cot_index": 33.8
       }
     },
     {
@@ -198,12 +198,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -176279,
-        "wow": -3153,
-        "z": -0.07,
-        "cot_index": 0.0
+        "net": -174448,
+        "wow": 1831,
+        "z": 0.23,
+        "cot_index": 0.9
       }
     },
     {
@@ -214,12 +214,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -36956,
-        "wow": 458,
-        "z": 0.23,
-        "cot_index": 34.2
+        "net": -34242,
+        "wow": 2714,
+        "z": 0.91,
+        "cot_index": 47.0
       }
     },
     {
@@ -230,12 +230,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -62766,
-        "wow": 2423,
-        "z": 0.68,
-        "cot_index": 3.8
+        "net": -49969,
+        "wow": 12797,
+        "z": 2.41,
+        "cot_index": 24.1
       }
     },
     {
@@ -246,12 +246,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 72955,
-        "wow": -4402,
-        "z": -0.67,
-        "cot_index": 33.5
+        "net": 71699,
+        "wow": -1256,
+        "z": -0.22,
+        "cot_index": 31.2
       }
     },
     {
@@ -262,12 +262,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 32757,
-        "wow": 1909,
-        "z": 0.19,
-        "cot_index": 23.3
+        "net": 35537,
+        "wow": 2780,
+        "z": 0.29,
+        "cot_index": 27.6
       }
     },
     {
@@ -278,12 +278,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 13173,
-        "wow": -96,
-        "z": -0.14,
-        "cot_index": 99.7
+        "net": 15614,
+        "wow": 2441,
+        "z": 0.67,
+        "cot_index": 100.0
       }
     },
     {
@@ -294,12 +294,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -179056,
-        "wow": -35465,
-        "z": -1.26,
-        "cot_index": 8.4
+        "net": -186790,
+        "wow": -7734,
+        "z": -0.22,
+        "cot_index": 5.2
       }
     },
     {
@@ -310,12 +310,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -324407,
-        "wow": -16588,
-        "z": -0.81,
-        "cot_index": 0.0
+        "net": -321350,
+        "wow": 3057,
+        "z": 0.26,
+        "cot_index": 2.7
       }
     },
     {
@@ -326,12 +326,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -831675,
-        "wow": -17413,
-        "z": -0.23,
-        "cot_index": 30.2
+        "net": -879706,
+        "wow": -48031,
+        "z": -0.63,
+        "cot_index": 18.9
       }
     },
     {
@@ -342,12 +342,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -145636,
-        "wow": 2508,
-        "z": -0.05,
-        "cot_index": 67.8
+        "net": -137632,
+        "wow": 8004,
+        "z": 0.09,
+        "cot_index": 68.6
       }
     },
     {
@@ -358,11 +358,11 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -1294283,
-        "wow": 64833,
-        "z": 0.45,
+        "net": -1273329,
+        "wow": 20954,
+        "z": -0.02,
         "cot_index": 100.0
       }
     },
@@ -374,11 +374,11 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -1157477,
-        "wow": 103531,
-        "z": 1.25,
+        "net": -1154597,
+        "wow": 2880,
+        "z": 0.01,
         "cot_index": 100.0
       }
     },
@@ -390,12 +390,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -407579,
-        "wow": -53326,
-        "z": -0.48,
-        "cot_index": 0.0
+        "net": -392302,
+        "wow": 15277,
+        "z": 0.26,
+        "cot_index": 2.1
       }
     },
     {
@@ -406,12 +406,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -2692081,
-        "wow": 83873,
-        "z": 0.77,
-        "cot_index": 7.5
+        "net": -2665085,
+        "wow": 26996,
+        "z": 0.42,
+        "cot_index": 8.4
       }
     },
     {
@@ -422,12 +422,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -218581,
-        "wow": -14134,
-        "z": -0.21,
-        "cot_index": 52.5
+        "net": -218920,
+        "wow": -339,
+        "z": 0.01,
+        "cot_index": 52.4
       }
     },
     {
@@ -438,12 +438,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 3091,
-        "wow": -409,
-        "z": -1.13,
-        "cot_index": 87.9
+        "net": 3054,
+        "wow": -37,
+        "z": -0.29,
+        "cot_index": 86.4
       }
     },
     {
@@ -454,12 +454,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 3172,
-        "wow": -736,
-        "z": -1.03,
-        "cot_index": 71.9
+        "net": 3915,
+        "wow": 743,
+        "z": 0.83,
+        "cot_index": 86.1
       }
     },
     {
@@ -470,12 +470,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 1023,
-        "wow": -77,
-        "z": -0.3,
-        "cot_index": 55.7
+        "net": 1039,
+        "wow": 16,
+        "z": -0.02,
+        "cot_index": 56.4
       }
     },
     {
@@ -486,12 +486,12 @@
         "legacy",
         "tff"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 970,
-        "wow": 1,
-        "z": -0.14,
-        "cot_index": 65.9
+        "net": 878,
+        "wow": -92,
+        "z": -0.8,
+        "cot_index": 59.8
       }
     },
     {
@@ -502,12 +502,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 186682,
-        "wow": -7564,
-        "z": -0.45,
-        "cot_index": 28.8
+        "net": 183910,
+        "wow": -2772,
+        "z": -0.1,
+        "cot_index": 26.4
       }
     },
     {
@@ -518,12 +518,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 25074,
-        "wow": -2941,
-        "z": -0.67,
-        "cot_index": 8.2
+        "net": 23465,
+        "wow": -1609,
+        "z": -0.26,
+        "cot_index": 4.2
       }
     },
     {
@@ -534,12 +534,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 64385,
-        "wow": 113,
-        "z": -0.06,
-        "cot_index": 75.2
+        "net": 73977,
+        "wow": 9592,
+        "z": 1.49,
+        "cot_index": 91.6
       }
     },
     {
@@ -550,12 +550,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 13748,
-        "wow": -124,
-        "z": -0.01,
-        "cot_index": 14.8
+        "net": 12484,
+        "wow": -1264,
+        "z": -0.55,
+        "cot_index": 3.6
       }
     },
     {
@@ -566,11 +566,11 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -4889,
-        "wow": -231,
-        "z": -0.34,
+        "net": -5003,
+        "wow": -114,
+        "z": -0.11,
         "cot_index": 0.0
       }
     },
@@ -582,12 +582,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 62683,
-        "wow": -13066,
-        "z": -0.67,
-        "cot_index": 11.8
+        "net": 81689,
+        "wow": 19006,
+        "z": 1.21,
+        "cot_index": 21.6
       }
     },
     {
@@ -598,12 +598,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -21424,
-        "wow": 3225,
-        "z": 0.41,
-        "cot_index": 68.1
+        "net": -26730,
+        "wow": -5306,
+        "z": -0.61,
+        "cot_index": 55.2
       }
     },
     {
@@ -614,12 +614,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 252042,
-        "wow": -1746,
-        "z": -0.62,
-        "cot_index": 97.7
+        "net": 255651,
+        "wow": 3609,
+        "z": 0.47,
+        "cot_index": 100.0
       }
     },
     {
@@ -630,12 +630,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 8476,
-        "wow": 3214,
-        "z": 0.75,
-        "cot_index": 26.1
+        "net": 9714,
+        "wow": 1238,
+        "z": 0.32,
+        "cot_index": 29.6
       }
     },
     {
@@ -646,12 +646,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 57985,
-        "wow": -239,
-        "z": -0.06,
-        "cot_index": 39.6
+        "net": 60994,
+        "wow": 3009,
+        "z": 0.33,
+        "cot_index": 43.7
       }
     },
     {
@@ -662,12 +662,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 131463,
-        "wow": 30483,
-        "z": 0.51,
-        "cot_index": 46.8
+        "net": 186650,
+        "wow": 55187,
+        "z": 0.97,
+        "cot_index": 56.5
       }
     },
     {
@@ -678,12 +678,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 125403,
-        "wow": 12596,
-        "z": 0.36,
-        "cot_index": 56.1
+        "net": 175646,
+        "wow": 50243,
+        "z": 1.6,
+        "cot_index": 73.3
       }
     },
     {
@@ -694,12 +694,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -16339,
-        "wow": 33391,
-        "z": 2.3,
-        "cot_index": 81.8
+        "net": -7009,
+        "wow": 9330,
+        "z": 0.6,
+        "cot_index": 91.7
       }
     },
     {
@@ -710,12 +710,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 1769,
-        "wow": 7782,
-        "z": 1.03,
-        "cot_index": 77.3
+        "net": 14300,
+        "wow": 12531,
+        "z": 1.66,
+        "cot_index": 98.3
       }
     },
     {
@@ -726,12 +726,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 87037,
-        "wow": 24649,
-        "z": 1.1,
-        "cot_index": 70.0
+        "net": 113860,
+        "wow": 26823,
+        "z": 1.18,
+        "cot_index": 81.1
       }
     },
     {
@@ -742,12 +742,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 107243,
-        "wow": 12577,
-        "z": 0.76,
-        "cot_index": 72.2
+        "net": 114142,
+        "wow": 6899,
+        "z": 0.4,
+        "cot_index": 75.2
       }
     },
     {
@@ -758,12 +758,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 95447,
-        "wow": 7019,
-        "z": 0.49,
-        "cot_index": 95.9
+        "net": 95112,
+        "wow": -335,
+        "z": -0.28,
+        "cot_index": 95.7
       }
     },
     {
@@ -774,12 +774,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 27827,
-        "wow": 2204,
-        "z": 0.56,
-        "cot_index": 56.7
+        "net": 27255,
+        "wow": -572,
+        "z": -0.12,
+        "cot_index": 55.2
       }
     },
     {
@@ -790,12 +790,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -10584,
-        "wow": 2145,
-        "z": 0.68,
-        "cot_index": 34.9
+        "net": -3907,
+        "wow": 6677,
+        "z": 1.78,
+        "cot_index": 52.8
       }
     },
     {
@@ -806,12 +806,12 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -62145,
-        "wow": -2872,
-        "z": -0.1,
-        "cot_index": 98.5
+        "net": -64490,
+        "wow": -2345,
+        "z": -0.08,
+        "cot_index": 97.3
       }
     },
     {
@@ -822,11 +822,11 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": 69705,
-        "wow": -11963,
-        "z": -2.05,
+        "net": 55014,
+        "wow": -14691,
+        "z": -2.36,
         "cot_index": 0.0
       }
     },
@@ -838,11 +838,11 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -977,
-        "wow": -3503,
-        "z": -1.45,
+        "net": -2003,
+        "wow": -1026,
+        "z": -0.23,
         "cot_index": 0.0
       }
     },
@@ -854,14 +854,14 @@
         "legacy",
         "disagg"
       ],
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-07-21",
       "summary": {
-        "net": -65228,
-        "wow": -807,
-        "z": 0.25,
-        "cot_index": 0.0
+        "net": -48802,
+        "wow": 16426,
+        "z": 2.22,
+        "cot_index": 9.7
       }
     }
   ],
-  "latest_report_date": "2026-07-14"
+  "latest_report_date": "2026-07-21"
 }
