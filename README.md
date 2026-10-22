@@ -21,9 +21,16 @@ so the charts refresh with no build step and no server.
   (where net sits within its trailing range, 0–100; ≥80 / ≤20 flag crowded
   positioning), weekly-change z-scores (±2σ flags unusual repositioning), net as
   % of open interest, open interest, and a per-report-date snapshot table you can
-  scrub through. A single **lookback** control (26 / 52 / 104 / 156 weeks) drives
+  scrub through. A thin **price line** (Yahoo Finance daily close on each
+  report date, right axis) sits behind the net-position and COT-index charts.
+  The focus selector also offers **net trader counts** (Legacy report: number
+  of traders long minus short), which can be scored like any category. A single **lookback** control (26 / 52 / 104 / 156 weeks) drives
   both the z-score and the COT index.
-- **Overview grid:** speculator net + weekly move + z-score badge + a COT-index
+- **Per-market focus:** `FOCUS` in `instruments.py` picks the default report
+  and category. Crypto defaults to **Legacy · Non-Reportable** (retail):
+  CME crypto speculators are mostly basis traders, so their net tracks the
+  futures premium rather than a view on price.
+- **Overview grid:** speculator (or focus-category) net + weekly move + z-score badge + a COT-index
   gauge (position in its 52-week range) for every market at a glance. History
   back to 2018.
 
@@ -53,7 +60,8 @@ docs/               <-- GitHub Pages root (zero-build static site)
 
 Markets are matched to the CFTC files by **stable contract market code** (not
 name), so history survives the contract renames CFTC made around 2021-22 and
-Micro contracts are excluded automatically.
+Micro contracts are excluded automatically (Micro Bitcoin is listed as its own
+market, `MBT`, because its retail positioning is a useful signal).
 
 ### Data sources (annual history files, CFTC)
 

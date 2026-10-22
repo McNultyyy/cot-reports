@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-17T15:24:12Z",
+  "generated": "2026-10-22T22:50:58Z",
   "source": "U.S. CFTC Commitments of Traders",
   "start_year": 2018,
   "summary_window": 52,
@@ -28,7 +28,8 @@
         "wow": 13075,
         "z": 0.35,
         "cot_index": 34.4
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "NQ",
@@ -44,7 +45,8 @@
         "wow": -9600,
         "z": -0.83,
         "cot_index": 90.1
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "YM",
@@ -60,7 +62,8 @@
         "wow": -1355,
         "z": -0.48,
         "cot_index": 71.0
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "RTY",
@@ -76,7 +79,8 @@
         "wow": 26842,
         "z": 2.34,
         "cot_index": 24.8
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "EMD",
@@ -92,7 +96,8 @@
         "wow": 2345,
         "z": 1.87,
         "cot_index": 94.2
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "VIX",
@@ -108,7 +113,8 @@
         "wow": -5161,
         "z": -0.48,
         "cot_index": 0.0
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "NIK",
@@ -124,7 +130,8 @@
         "wow": 3268,
         "z": 2.1,
         "cot_index": 78.4
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "EUR",
@@ -140,7 +147,8 @@
         "wow": -38241,
         "z": -1.53,
         "cot_index": 0.0
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "GBP",
@@ -156,7 +164,8 @@
         "wow": -9353,
         "z": -0.58,
         "cot_index": 0.0
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "JPY",
@@ -172,7 +181,8 @@
         "wow": -12118,
         "z": -0.38,
         "cot_index": 75.3
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "AUD",
@@ -188,7 +198,8 @@
         "wow": -18711,
         "z": -1.35,
         "cot_index": 0.0
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "CAD",
@@ -204,7 +215,8 @@
         "wow": -4602,
         "z": -0.28,
         "cot_index": 39.2
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "CHF",
@@ -220,7 +232,8 @@
         "wow": 1662,
         "z": 0.45,
         "cot_index": 91.2
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "NZD",
@@ -236,7 +249,8 @@
         "wow": -17655,
         "z": -2.2,
         "cot_index": 24.0
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "MXN",
@@ -252,7 +266,8 @@
         "wow": 4541,
         "z": 0.59,
         "cot_index": 4.6
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "BRL",
@@ -268,7 +283,8 @@
         "wow": -5545,
         "z": -0.66,
         "cot_index": 52.7
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "DXY",
@@ -284,7 +300,8 @@
         "wow": 908,
         "z": 0.12,
         "cot_index": 75.3
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "ZB",
@@ -300,7 +317,8 @@
         "wow": -6626,
         "z": -0.18,
         "cot_index": 35.5
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "UB",
@@ -316,7 +334,8 @@
         "wow": -45258,
         "z": -2.05,
         "cot_index": 48.6
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "ZN",
@@ -332,7 +351,8 @@
         "wow": -91621,
         "z": -1.22,
         "cot_index": 0.0
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "TN",
@@ -348,7 +368,8 @@
         "wow": -52838,
         "z": -1.45,
         "cot_index": 47.1
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "ZF",
@@ -364,7 +385,8 @@
         "wow": 83327,
         "z": 0.6,
         "cot_index": 87.5
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "ZT",
@@ -380,7 +402,8 @@
         "wow": -58675,
         "z": -0.79,
         "cot_index": 87.4
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "ZQ",
@@ -396,7 +419,8 @@
         "wow": -2478,
         "z": -0.08,
         "cot_index": 67.9
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "SR3",
@@ -412,7 +436,8 @@
         "wow": 74192,
         "z": 0.7,
         "cot_index": 21.9
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "SR1",
@@ -428,7 +453,8 @@
         "wow": -9402,
         "z": -0.2,
         "cot_index": 97.8
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "BTC",
@@ -440,11 +466,29 @@
       ],
       "latest_date": "2026-10-13",
       "summary": {
-        "net": 2534,
-        "wow": -6,
-        "z": -0.13,
-        "cot_index": 70.5
-      }
+        "net": 201,
+        "wow": -265,
+        "z": -1.08,
+        "cot_index": 48.0
+      },
+      "summary_cat": "Non-Reportable"
+    },
+    {
+      "ticker": "MBT",
+      "name": "Micro Bitcoin (CME)",
+      "group": "Crypto",
+      "reports": [
+        "legacy",
+        "tff"
+      ],
+      "latest_date": "2026-10-13",
+      "summary": {
+        "net": 4616,
+        "wow": -263,
+        "z": -0.32,
+        "cot_index": 59.9
+      },
+      "summary_cat": "Non-Reportable"
     },
     {
       "ticker": "ETH",
@@ -456,11 +500,12 @@
       ],
       "latest_date": "2026-10-13",
       "summary": {
-        "net": 2407,
-        "wow": 130,
-        "z": 0.2,
-        "cot_index": 40.7
-      }
+        "net": 207,
+        "wow": -303,
+        "z": -0.49,
+        "cot_index": 27.7
+      },
+      "summary_cat": "Non-Reportable"
     },
     {
       "ticker": "SOL",
@@ -472,11 +517,12 @@
       ],
       "latest_date": "2026-10-13",
       "summary": {
-        "net": 704,
-        "wow": 4,
-        "z": 0.05,
-        "cot_index": 23.2
-      }
+        "net": 182,
+        "wow": 71,
+        "z": 0.3,
+        "cot_index": 55.7
+      },
+      "summary_cat": "Non-Reportable"
     },
     {
       "ticker": "XRP",
@@ -488,11 +534,12 @@
       ],
       "latest_date": "2026-10-13",
       "summary": {
-        "net": 1229,
-        "wow": 83,
-        "z": 0.31,
-        "cot_index": 73.7
-      }
+        "net": -25,
+        "wow": -18,
+        "z": -0.09,
+        "cot_index": 89.7
+      },
+      "summary_cat": "Non-Reportable"
     },
     {
       "ticker": "GC",
@@ -508,7 +555,8 @@
         "wow": -2456,
         "z": -0.2,
         "cot_index": 55.3
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "SI",
@@ -524,7 +572,8 @@
         "wow": -522,
         "z": -0.05,
         "cot_index": 3.3
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "HG",
@@ -540,7 +589,8 @@
         "wow": -914,
         "z": -0.2,
         "cot_index": 56.4
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "PL",
@@ -556,7 +606,8 @@
         "wow": -995,
         "z": -0.53,
         "cot_index": 11.5
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "PA",
@@ -572,7 +623,8 @@
         "wow": -1061,
         "z": -1.65,
         "cot_index": 0.0
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "CL",
@@ -588,7 +640,8 @@
         "wow": 1283,
         "z": 0.03,
         "cot_index": 31.2
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "BZ",
@@ -604,7 +657,8 @@
         "wow": -7063,
         "z": -0.81,
         "cot_index": 25.7
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "NG",
@@ -620,7 +674,8 @@
         "wow": 27,
         "z": -0.32,
         "cot_index": 92.6
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "HO",
@@ -636,7 +691,8 @@
         "wow": 3758,
         "z": 0.98,
         "cot_index": 43.5
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "RB",
@@ -652,7 +708,8 @@
         "wow": 4930,
         "z": 0.55,
         "cot_index": 59.8
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "ZC",
@@ -668,7 +725,8 @@
         "wow": -94106,
         "z": -1.79,
         "cot_index": 70.5
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "ZS",
@@ -684,7 +742,8 @@
         "wow": -2797,
         "z": -0.24,
         "cot_index": 95.3
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "ZW",
@@ -700,7 +759,8 @@
         "wow": -1558,
         "z": -0.2,
         "cot_index": 64.3
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "KE",
@@ -716,7 +776,8 @@
         "wow": -9269,
         "z": -1.42,
         "cot_index": 67.2
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "ZM",
@@ -732,7 +793,8 @@
         "wow": -5355,
         "z": -0.53,
         "cot_index": 98.1
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "ZL",
@@ -748,7 +810,8 @@
         "wow": -1956,
         "z": -0.21,
         "cot_index": 73.1
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "CT",
@@ -764,7 +827,8 @@
         "wow": -2051,
         "z": -0.53,
         "cot_index": 81.2
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "KC",
@@ -780,7 +844,8 @@
         "wow": -2677,
         "z": -0.51,
         "cot_index": 19.3
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "CC",
@@ -796,7 +861,8 @@
         "wow": 1912,
         "z": 0.52,
         "cot_index": 46.9
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "SB",
@@ -812,7 +878,8 @@
         "wow": 9699,
         "z": 0.09,
         "cot_index": 100.0
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "LE",
@@ -828,7 +895,8 @@
         "wow": -3066,
         "z": -0.22,
         "cot_index": 0.0
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "GF",
@@ -844,7 +912,8 @@
         "wow": -282,
         "z": 0.08,
         "cot_index": 17.3
-      }
+      },
+      "summary_cat": "Non-Commercial"
     },
     {
       "ticker": "HE",
@@ -860,7 +929,8 @@
         "wow": -5319,
         "z": -0.24,
         "cot_index": 0.0
-      }
+      },
+      "summary_cat": "Non-Commercial"
     }
   ],
   "latest_report_date": "2026-10-13"

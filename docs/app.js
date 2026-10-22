@@ -21,6 +21,8 @@ const PAL = {
 /* Smart-money & hedger category per report family (for tiles / defaults). */
 const SMART = { legacy: 'Non-Commercial', tff: 'Leveraged', disagg: 'Managed Money' };
 const REPORT_LABEL = { legacy: 'Legacy', tff: 'Fin. Futures (TFF)', disagg: 'Disaggregated' };
+/* Focus-select values for trader-count series are prefixed so they can't clash with a category. */
+const TRADERS = 'traders:';
 
 const CHART_GROUP = 'cot';
 const state = {
@@ -157,7 +159,7 @@ function cotGauge(v) {
   const w = v == null ? 0 : Math.max(0, Math.min(100, v));
   const lab = v == null ? '—' : Math.round(v);
   const win = (state.index && state.index.summary_window) || 52;
-  return `<div class="cot" title="COT index — spec net's position in its ${win}-week range (100 = top, 0 = bottom)">
+  return `<div class="cot" title="COT index — net's position in its ${win}-week range (100 = top, 0 = bottom)">
       <div class="cot-bar"><i class="cot-fill ${zone}" style="width:${w}%"></i></div>
       <span class="cot-val ${zone}">idx ${lab}</span>
     </div>`;
@@ -177,7 +179,7 @@ function card(it) {
     </div>
     <div>
       <div class="card-net">${compact(s.net)}</div>
-      <div class="card-cat">spec net · contracts</div>
+      <div class="card-cat">${it.summary_cat === 'Non-Reportable' ? 'retail' : 'spec'} net · contracts</div>
     </div>
     ${cotGauge(s.cot_index)}
     <div class="card-bot">
@@ -218,7 +220,9 @@ document.getElementById('back').addEventListener('click', showOverview);
 async function openDetail(ticker) {
   const res = await fetch(`./data/${ticker}.json`);
   state.inst = await res.json();
-  state.report = state.inst.reports.legacy ? 'legacy' : Object.keys(state.inst.reports)[0];
+  const want = state.inst.focus && state.inst.focus.report;
+  state.report = state.inst.reports[want] ? want
+    : state.inst.reports.legacy ? 'legacy' : Object.keys(state.inst.reports)[0];
 
   document.getElementById('overview').hidden = true;
   document.getElementById('detail').hidden = false;
@@ -252,6 +256,38 @@ function renderTabs() {
 
 function cats() { return state.inst.reports[state.report].categories; }
 function catNames() { return Object.keys(cats()); }
+function traders() { return state.inst.reports[state.report].traders || {}; }
+
+/* Net series and display label for a focus-select value (a category or a trader count). */
+function focusSeries(value) {
+  if (value.startsWith(TRADERS)) {
+    const name = value.slice(TRADERS.length);
+    return { net: traders()[name].net, label: `${name} net traders` };
+  }
+  return { net: cats()[value].net, label: value };
+}
+
+/* Price closes aligned to the current report's dates (null where unknown). */
+function priceSeries() {
+  const pr = state.inst.price;
+  if (!pr) return null;
+  const byDate = new Map(pr.dates.map((d, i) => [d, pr.close[i]]));
+  return state.inst.reports[state.report].dates.map((d) => byDate.get(d) ?? null);
+}
+const fmtPrice = (v) => (v == null ? '—' : (+v).toLocaleString('en-US', { maximumSignificantDigits: 6 }));
+
+/* Price as a thin line on a chart's right-hand axis. */
+function priceLine(p, close) {
+  return {
+    name: `Price (${state.inst.price.symbol})`, type: 'line', yAxisIndex: 1, showSymbol: false, z: 1,
+    lineStyle: { width: 1.5, color: p.text2, opacity: 0.7 }, itemStyle: { color: p.text2 },
+    tooltip: { valueFormatter: fmtPrice }, data: close,
+  };
+}
+function priceAxis(p) {
+  return { type: 'value', scale: true, position: 'right', splitLine: { show: false }, axisLine: { show: false },
+           axisLabel: { color: p.muted, fontSize: 11, formatter: (v) => compact(+v.toPrecision(3)) } };
+}
 
 function renderReport() {
   document.querySelectorAll('#report-tabs .tab').forEach((t) => {
@@ -261,8 +297,13 @@ function renderReport() {
   // category selector (for z-score & pct focus)
   const sel = document.getElementById('cat-select');
   const names = catNames();
-  const preferred = SMART[state.report] && names.includes(SMART[state.report]) ? SMART[state.report] : names[0];
-  sel.innerHTML = names.map((n) => `<option ${n === preferred ? 'selected' : ''}>${n}</option>`).join('');
+  const own = state.inst.focus && state.inst.focus[state.report];
+  const preferred = [own, SMART[state.report]].find((n) => n && names.includes(n)) || names[0];
+  const tNames = Object.keys(traders());
+  sel.innerHTML = '<optgroup label="Net positions (contracts)">' +
+    names.map((n) => `<option value="${n}" ${n === preferred ? 'selected' : ''}>${n}</option>`).join('') + '</optgroup>' +
+    (tNames.length ? '<optgroup label="Net traders (count)">' +
+      tNames.map((n) => `<option value="${TRADERS}${n}">${n} net traders</option>`).join('') + '</optgroup>' : '');
   sel.onchange = () => renderCharts();
 
   const win = document.getElementById('win-select');
@@ -401,8 +442,10 @@ function renderCharts() {
   const rep = state.inst.reports[state.report];
   const dates = rep.dates;
   const c = cats(); const names = catNames();
-  const focus = document.getElementById('cat-select').value || names[0];
-  document.getElementById('cap-z').textContent = `${focus} — weekly change z-score`;
+  const focus = focusSeries(document.getElementById('cat-select').value || names[0]);
+  document.getElementById('cap-z').textContent = `${focus.label} — weekly change z-score`;
+  const close = priceSeries();
+  const withPrice = (grid) => (close ? { ...grid, right: 58 } : grid);
 
   /* 1 — Net positions by category (lines) */
   const net = mkChart('chart-net');
@@ -415,32 +458,34 @@ function renderCharts() {
       data: [{ yAxis: 0 }], label: { show: false } } : undefined,
     data: c[name].net,
   }));
+  if (close) netSeries.push(priceLine(p, close));
   net.__markerIdx = netSeries.length;
   net.setOption({
-    grid: baseGrid(),
-    legend: { top: 0, data: names, textStyle: { color: p.text2, fontSize: 12 }, itemWidth: 14, itemHeight: 8 },
+    grid: withPrice(baseGrid()),
+    legend: { top: 0, data: netSeries.map((s) => s.name), textStyle: { color: p.text2, fontSize: 12 }, itemWidth: 14, itemHeight: 8 },
     tooltip: tooltipBox(p),
     xAxis: { type: 'category', data: dates, boundaryGap: false, ...axisCommon(p) },
-    yAxis: { type: 'value', name: 'net contracts', nameTextStyle: { color: p.muted, fontSize: 11 },
+    yAxis: [{ type: 'value', name: 'net contracts', nameTextStyle: { color: p.muted, fontSize: 11 },
              axisLabel: { color: p.muted, fontSize: 11, formatter: compact }, splitLine: { lineStyle: { color: p.grid } },
-             axisLine: { show: false } },
+             axisLine: { show: false } }, ...(close ? [priceAxis(p)] : [])],
     dataZoom: dataZoom(p),
     series: [...netSeries, markerSeries(p)],
   });
 
   /* 2 — COT index (0-100): focus category's net position within its range */
-  const ci = cotIndex(c[focus].net, state.window);
-  document.getElementById('cap-cot').textContent = `${focus} — COT index (${state.window}w)`;
+  const ci = cotIndex(focus.net, state.window);
+  document.getElementById('cap-cot').textContent = `${focus.label} — COT index (${state.window}w)`;
   const hotBand = currentMode() === 'dark' ? 'rgba(230,103,103,0.10)' : 'rgba(227,73,72,0.08)';
   const coldBand = currentMode() === 'dark' ? 'rgba(57,135,229,0.10)' : 'rgba(42,120,214,0.08)';
   const cotChart = mkChart('chart-cot');
-  cotChart.__markerIdx = 1;
+  cotChart.__markerIdx = close ? 2 : 1;
   cotChart.setOption({
-    grid: { ...baseGrid(), left: 40 },
+    grid: withPrice({ ...baseGrid(), left: 40 }),
     tooltip: { ...tooltipBox(p), valueFormatter: (v) => (v == null ? '—' : Math.round(v)) },
     xAxis: { type: 'category', data: dates, boundaryGap: false, ...axisCommon(p) },
-    yAxis: { type: 'value', min: 0, max: 100, interval: 20,
+    yAxis: [{ type: 'value', min: 0, max: 100, interval: 20,
              axisLabel: { color: p.muted, fontSize: 11 }, splitLine: { lineStyle: { color: p.grid } }, axisLine: { show: false } },
+            ...(close ? [priceAxis(p)] : [])],
     dataZoom: dataZoom(p),
     // Colour the line by zone: crowded long (>80) red, crowded short (<20) blue.
     visualMap: { show: false, type: 'piecewise', dimension: 1, seriesIndex: 0,
@@ -453,13 +498,13 @@ function renderCharts() {
         [{ yAxis: 0, itemStyle: { color: coldBand } }, { yAxis: 20 }],
       ] },
       markLine: { silent: true, symbol: 'none',
-        label: { color: p.muted, fontSize: 10, formatter: (d) => String(d.value) },
+        label: { color: p.muted, fontSize: 10, formatter: (d) => String(d.value), position: close ? 'insideEndTop' : 'end' },
         lineStyle: { color: p.warning, type: 'dashed', width: 1 }, data: [{ yAxis: 80 }, { yAxis: 20 }] },
-    }, markerSeries(p)],
+    }, ...(close ? [priceLine(p, close)] : []), markerSeries(p)],
   });
 
   /* 3 — Weekly change z-score (diverging bars) for focus category */
-  const { z } = zScores(c[focus].net, state.window);
+  const { z } = zScores(focus.net, state.window);
   const zc = mkChart('chart-z');
   zc.__markerIdx = 1;
   zc.setOption({
@@ -556,5 +601,19 @@ function updateSnapshot(idx) {
       <td class="${cotZone(civ)}">${civ == null ? '—' : Math.round(civ)}</td>
     </tr>`;
   }).join('') +
+    Object.entries(traders()).map(([name, s]) => {
+      const net = s.net[idx];
+      const wow = idx > 0 ? net - s.net[idx - 1] : 0;
+      const civ = cotIndex(s.net, state.window)[idx];
+      return `<tr>
+        <td class="cat" style="color:var(--muted)">${name} traders</td>
+        <td>${fmt.format(s.long[idx])}</td>
+        <td>${fmt.format(s.short[idx])}</td>
+        <td class="${net >= 0 ? 'num-pos' : 'num-neg'}">${sign(net)}</td>
+        <td class="${wow >= 0 ? 'num-pos' : 'num-neg'}">${sign(wow)}</td>
+        <td>—</td>
+        <td class="${cotZone(civ)}">${civ == null ? '—' : Math.round(civ)}</td>
+      </tr>`;
+    }).join('') +
     `<tr><td class="cat" style="color:var(--muted)">Open interest</td><td colspan="6" style="text-align:left;color:var(--muted)">${fmt.format(oi)} contracts</td></tr>`;
 }
