@@ -26,7 +26,7 @@ from datetime import datetime, timezone
 import pandas as pd
 import requests
 
-from instruments import INSTRUMENTS, GROUP_ORDER
+from instruments import FOCUS, GROUP_ORDER, INSTRUMENTS, PRICE_SYMBOLS
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -57,6 +57,11 @@ REPORTS = {
             "Commercial":    ("Commercial Positions-Long (All)",    "Commercial Positions-Short (All)"),
             "Non-Commercial": ("Noncommercial Positions-Long (All)", "Noncommercial Positions-Short (All)"),
             "Non-Reportable": ("Nonreportable Positions-Long (All)", "Nonreportable Positions-Short (All)"),
+        },
+        # Number of reporting traders on each side (no counts exist for Non-Reportable).
+        "traders": {
+            "Commercial":     ("Traders-Commercial-Long (All)",    "Traders-Commercial-Short (All)"),
+            "Non-Commercial": ("Traders-Noncommercial-Long (All)", "Traders-Noncommercial-Short (All)"),
         },
     },
     "tff": {
@@ -90,7 +95,7 @@ REPORTS = {
 
 def _needed_cols(cfg):
     cols = [cfg["market_col"], cfg["code_col"], cfg["date_col"], cfg["oi_col"]]
-    for lc, sc in cfg["categories"].values():
+    for lc, sc in [*cfg["categories"].values(), *cfg.get("traders", {}).values()]:
         cols += [lc, sc]
     return cols
 
@@ -104,7 +109,10 @@ def download_year(report: str, year: int) -> pd.DataFrame | None:
     if os.path.exists(cache) and not FORCE and year < END_YEAR:
         # Past years never change once published -> trust the cache.
         try:
-            return pd.read_csv(cache, low_memory=False)
+            df = pd.read_csv(cache, low_memory=False)
+            # A cache written before a column was added to the config is stale.
+            if set(_needed_cols(cfg)) <= set(df.columns):
+                return df
         except Exception:
             pass
 
@@ -174,7 +182,44 @@ def series_for(df: pd.DataFrame, cfg: dict, market: str) -> dict | None:
         longs, shorts = col(lc), col(sc)
         nets = [l - s for l, s in zip(longs, shorts)]
         out["categories"][cat] = {"long": longs, "short": shorts, "net": nets}
+    if "traders" in cfg:
+        out["traders"] = {}
+        for cat, (lc, sc) in cfg["traders"].items():
+            if lc in sub.columns and sc in sub.columns:
+                longs, shorts = col(lc), col(sc)
+                out["traders"][cat] = {"long": longs, "short": shorts, "net": [l - s for l, s in zip(longs, shorts)]}
     return out
+
+
+def fetch_closes(symbol: str) -> pd.Series | None:
+    """Daily closes for a Yahoo Finance symbol, or None if the request fails."""
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
+    params = {"period1": int(datetime(START_YEAR, 1, 1, tzinfo=timezone.utc).timestamp()),
+              "period2": int(datetime.now(timezone.utc).timestamp()), "interval": "1d"}
+    try:
+        r = requests.get(url, params=params, headers={"User-Agent": "Mozilla/5.0 (cot-reports)"}, timeout=60)
+        res = r.json()["chart"]["result"][0]
+        closes = pd.Series(res["indicators"]["quote"][0]["close"],
+                           index=pd.to_datetime(res["timestamp"], unit="s").normalize(), dtype="float64")
+    except Exception as e:
+        print(f"  ! price {symbol}: {e}")
+        return None
+    closes = closes.dropna()
+    return closes[~closes.index.duplicated(keep="last")] if len(closes) > 1 else None
+
+
+def price_for(symbol: str, dates: list[str], previous: dict | None) -> dict | None:
+    """Close on (or the last trading day before) each report date.
+
+    Falls back to the price block already published for this market when the
+    download fails, so a Yahoo outage never wipes the line from the site.
+    """
+    closes = fetch_closes(symbol)
+    if closes is None:
+        return previous if previous and previous.get("symbol") == symbol else None
+    aligned = closes.reindex(pd.to_datetime(dates), method="ffill")
+    return {"symbol": symbol, "dates": dates,
+            "close": [None if pd.isna(v) else round(float(v), 6) for v in aligned]}
 
 
 def cot_index(net: list[int], window: int = SUMMARY_WINDOW) -> float | None:
@@ -262,13 +307,33 @@ def main():
         if not matched:
             continue
 
-        with open(os.path.join(OUT_DIR, f"{inst['ticker']}.json"), "w", encoding="utf-8") as f:
+        out_path = os.path.join(OUT_DIR, f"{inst['ticker']}.json")
+        focus = FOCUS.get(inst["ticker"])
+        if focus:
+            record["focus"] = focus
+        symbol = PRICE_SYMBOLS.get(inst["ticker"])
+        if symbol:
+            previous = None
+            if os.path.exists(out_path):
+                try:
+                    with open(out_path, encoding="utf-8") as f:
+                        previous = json.load(f).get("price")
+                except (OSError, ValueError):
+                    pass
+            base = record["reports"].get("legacy") or record["reports"][matched[0]]
+            price = price_for(symbol, base["dates"], previous)
+            if price:
+                record["price"] = price
+
+        with open(out_path, "w", encoding="utf-8") as f:
             json.dump(record, f, separators=(",", ":"))
 
-        # Overview summary: classic large-speculator (legacy Non-Commercial) net.
+        # Overview summary: classic large-speculator (legacy Non-Commercial) net,
+        # unless the market sets its own focus category for the Legacy report.
         summary = {"net": 0, "wow": 0, "z": 0.0, "cot_index": None}
+        summary_cat = (focus or {}).get("legacy", "Non-Commercial")
         if "legacy" in record["reports"]:
-            summary = summarize(record["reports"]["legacy"]["categories"]["Non-Commercial"]["net"])
+            summary = summarize(record["reports"]["legacy"]["categories"][summary_cat]["net"])
 
         index["instruments"].append({
             "ticker": inst["ticker"],
@@ -277,6 +342,7 @@ def main():
             "reports": matched,
             "latest_date": latest_date,
             "summary": summary,
+            "summary_cat": summary_cat,
         })
         latest_overall = max(latest_overall, latest_date)
 

@@ -11,6 +11,11 @@ Each entry has:
               "tff"     -> Dealer / Asset Mgr / Leveraged / Other  (financials)
               "disagg"  -> Producer-Merchant / Swap / Managed Money / Other (commodities)
 
+Optional per-market settings live in the dicts below the list:
+  PRICE_SYMBOLS  - Yahoo Finance symbol for the price line drawn over the charts
+  FOCUS          - category to show by default (and to summarise on the
+                   overview card) instead of the report's speculator group
+
 To add or remove a market, edit this list. build_data.py prints a coverage
 report so you can see which reports actually matched.
 """
@@ -53,6 +58,7 @@ INSTRUMENTS = [
 
     # ── Crypto (CME) ─────────────────────────────────────────────────
     {"ticker": "BTC",  "name": "Bitcoin (CME)",         "group": "Crypto", "market": "BITCOIN - CHICAGO MERCANTILE EXCHANGE", "reports": FIN},
+    {"ticker": "MBT",  "name": "Micro Bitcoin (CME)",   "group": "Crypto", "market": "MICRO BITCOIN - CHICAGO MERCANTILE EXCHANGE", "reports": FIN},
     {"ticker": "ETH",  "name": "Ether (CME)",           "group": "Crypto", "market": "ETHER CASH SETTLED - CHICAGO MERCANTILE EXCHANGE", "reports": FIN},
     {"ticker": "SOL",  "name": "Solana (CME)",          "group": "Crypto", "market": "SOL - CHICAGO MERCANTILE EXCHANGE", "reports": FIN},
     {"ticker": "XRP",  "name": "XRP (CME)",             "group": "Crypto", "market": "XRP - CHICAGO MERCANTILE EXCHANGE", "reports": FIN},
@@ -91,3 +97,25 @@ INSTRUMENTS = [
 
 # Display order for groups in the UI.
 GROUP_ORDER = ["Equities", "FX", "Rates", "Crypto", "Metals", "Energy", "Agriculture", "Livestock"]
+
+# Yahoo Finance symbol per ticker, for the price line on the detail charts.
+# Markets left out (no usable daily history on Yahoo) simply show no price.
+PRICE_SYMBOLS = {
+    "ES": "ES=F", "NQ": "NQ=F", "YM": "YM=F", "RTY": "RTY=F", "VIX": "^VIX", "NIK": "NKD=F",
+    "EUR": "6E=F", "GBP": "6B=F", "JPY": "6J=F", "AUD": "6A=F", "CAD": "6C=F", "CHF": "6S=F",
+    "NZD": "6N=F", "MXN": "6M=F", "BRL": "6L=F", "DXY": "DX-Y.NYB",
+    "ZB": "ZB=F", "UB": "UB=F", "ZN": "ZN=F", "TN": "TN=F", "ZF": "ZF=F", "ZT": "ZT=F", "ZQ": "ZQ=F",
+    "BTC": "BTC-USD", "MBT": "BTC-USD", "ETH": "ETH-USD", "SOL": "SOL-USD", "XRP": "XRP-USD",
+    "GC": "GC=F", "SI": "SI=F", "HG": "HG=F", "PL": "PL=F", "PA": "PA=F",
+    "CL": "CL=F", "BZ": "BZ=F", "NG": "NG=F", "HO": "HO=F", "RB": "RB=F",
+    "ZC": "ZC=F", "ZS": "ZS=F", "ZW": "ZW=F", "KE": "KE=F", "ZM": "ZM=F", "ZL": "ZL=F",
+    "CT": "CT=F", "KC": "KC=F", "CC": "CC=F", "SB": "SB=F",
+    "LE": "LE=F", "GF": "GF=F", "HE": "HE=F",
+}
+
+# Default focus category per ticker, by report. CME crypto speculators are mostly
+# basis traders (short futures against long spot/ETF), so their net tracks the
+# futures premium rather than a view on price. Retail (Non-Reportable) is the
+# useful sentiment read there, and only the Legacy report carries it.
+_RETAIL = {"report": "legacy", "legacy": "Non-Reportable"}
+FOCUS = {"BTC": _RETAIL, "MBT": _RETAIL, "ETH": _RETAIL, "SOL": _RETAIL, "XRP": _RETAIL}

@@ -28,7 +28,7 @@
     <section id="overview" class="view">
       <div class="overview-head">
         <h2>Markets</h2>
-        <p class="hint">Speculator (smart-money) net positioning, this week's move, and the COT index (position within its 52-week range). Click a market for full history.</p>
+        <p class="hint">Speculator net positioning (retail for crypto, where speculators are mostly basis traders), this week's move, and the COT index (position within its 52-week range). Click a market for full history.</p>
       </div>
       <div id="grid"></div>
     </section>
@@ -48,7 +48,7 @@
 
       <div class="controls">
         <label class="ctl">
-          <span>Category for change / z-score</span>
+          <span>Focus series (COT index &amp; z-score)</span>
           <select id="cat-select"></select>
         </label>
         <label class="ctl">
@@ -67,7 +67,7 @@
       </div>
 
       <figure class="chart-card">
-        <figcaption>Net positions by trader category <span class="cap-note">(long − short, contracts)</span><span class="help"><button class="info" type="button" aria-label="How to read this chart" aria-expanded="false">i</button><span class="tip" role="tooltip">Each line is one trader group's net position — long minus short contracts. Above zero is net long (positioned for a rise), below zero net short. Hedgers and speculators usually sit on opposite sides; watch for extremes or crossovers, which often precede turning points.</span></span></figcaption>
+        <figcaption>Net positions by trader category <span class="cap-note">(long − short, contracts)</span><span class="help"><button class="info" type="button" aria-label="How to read this chart" aria-expanded="false">i</button><span class="tip" role="tooltip">Each line is one trader group's net position — long minus short contracts. Above zero is net long (positioned for a rise), below zero net short. Hedgers and speculators usually sit on opposite sides; watch for extremes or crossovers, which often precede turning points. Where available, the thin grey line is the market's price (right axis).</span></span></figcaption>
         <div id="chart-net" class="chart"></div>
       </figure>
 
